@@ -1,0 +1,17 @@
+<html>
+  <head>
+    {% if title %}
+    <title> {{ title }} - Canopy </title>
+    {% else %}
+    <title> Canopy Child Advocacy Center </title>
+    {% endif %}
+  </head>
+  <body>
+    <div> 
+      <a href="/index">Home</a>
+      <a href='/login'>Login</a>
+    </div> 
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+<html>
