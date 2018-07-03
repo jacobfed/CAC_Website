@@ -1,24 +1,42 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, PostForm
 from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User
+from app.models import User, Post
 
-@app.route('/')
-@app.route('/index')
+# ------------------------------------------
+#                   User
+# ------------------------------------------
+@app.route('/',  methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    user = {'username': 'Jacob'}
-    posts = [
-            {
-                'author' : { 'username': 'Natalie'},
-                'body' : ' Fundraiser Event September 12th, 2018'
-            },
-            {
-                'author' : { 'username': 'Nat'},
-                'body' : ' Closed Christmas day'
-            }
-        ]
-    return render_template('index.html', title='Home', posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+            page, app.config['POSTS_PER_PAGE'], False)
+    return render_template('index.html', title='Home', posts=posts.items)
+@app.route('/events')
+def events():
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('events.html', title='Events', posts=posts)
+# ------------------------------------------
+#                   Admin
+# ------------------------------------------
+@app.route('/user/<username>', methods=['GET', 'POST'])
+@login_required
+def user(username):
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect('/index')
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('user.html',form=form, user=user, posts=posts)
+# ------------------------------------------
+#       Login/Logout/Register
+# ------------------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
