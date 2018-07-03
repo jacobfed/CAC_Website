@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, PostForm
 from flask_login import current_user, login_user, login_required, logout_user
-from app.models import User
+from app.models import User, Post
 
-@app.route('/')
-@app.route('/index')
+@app.route('/',  methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     user = {'username': 'Jacob'}
     posts = [
@@ -19,6 +19,27 @@ def index():
             }
         ]
     return render_template('index.html', title='Home', posts=posts)
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [ 
+            {'author': user, 'body': 'Test post #1'},
+            {'author': user, 'body': 'Test post #2'},
+            {'author': user, 'body': 'Test post #3'},
+            {'author': user, 'body': 'Test post #4'}
+            ]
+    return render_template('user.html',form=form, user=user, posts=posts)
+# ------------------------------------------
+#       Login/Logout/Register
+# ------------------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
