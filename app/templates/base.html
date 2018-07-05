@@ -9,15 +9,23 @@
   <body>
     <div> 
       <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('aboutUs')}}"> About Us </a>
+      <a href="{{ url_for('whatWeDo')}}"> What We Do </a>
+      <a href="{{ url_for('partners')}}"> Partners </a>
+      <a href="{{ url_for('contactUs')}}"> Contact Us </a>
       <a href="{{ url_for('events') }}">Events</a>
+      <a href="{{ url_for('donate')}}"> Donate </a>
+    </div> 
+    <hr>
+    {% block content %}{% endblock %}
+    <div>
+      <hr>
       {% if current_user.is_anonymous %}
       <a href="{{ url_for('login') }}">Login</a>
       {% else %}
       <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
       <a href="{{ url_for('logout') }}"> Logout </a>
       {% endif %}
-    </div> 
-    <hr>
-    {% block content %}{% endblock %}
+    </div>
   </body>
 <html>

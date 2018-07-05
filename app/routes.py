@@ -18,6 +18,21 @@ def index():
 def events():
     posts = Post.query.order_by(Post.timestamp.desc()).all()
     return render_template('events.html', title='Events', posts=posts)
+@app.route('/aboutUs')
+def aboutUs():
+    return render_template('aboutUs.html', title='About Us')
+@app.route('/whatWeDo')
+def whatWeDo():
+    return render_template('whatWeDo.html', title='What We Do')
+@app.route('/partners')
+def partners():
+    return render_template('partners.html', title='Partners')
+@app.route('/contactUs')
+def contactUs():
+    return render_template('contactUs.html', title='Contact Us')
+@app.route('/donate')
+def donate():
+    return render_template('donate.html', title='Donate')
 # ------------------------------------------
 #                   Admin
 # ------------------------------------------
