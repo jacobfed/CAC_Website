@@ -29,7 +29,8 @@ def partners():
     return render_template('partners.html', title='Partners')
 @app.route('/contactUs')
 def contactUs():
-    return render_template('contactUs.html', title='Contact Us')
+    contactUsPhoto = "/static/images/contactUsPhoto.jpg"
+    return render_template('contactUs.html', user_image = contactUsPhoto, title='Contact Us')
 @app.route('/donate')
 def donate():
     return render_template('donate.html', title='Donate')
