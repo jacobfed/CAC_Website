@@ -14,7 +14,6 @@ pyparsing==2.2.0
 python-dateutil==2.7.3
 python-dotenv==0.9.1
 pytz==2018.5
-rdflib==2.4.2
 six==1.11.0
 stevedore==1.29.0
 subprocess32==3.5.2
