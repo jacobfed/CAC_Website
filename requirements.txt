@@ -17,7 +17,6 @@ pytz==2018.5
 six==1.11.0
 stevedore==1.29.0
 subprocess32==3.5.2
-TBB==0.1
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
 virtualenvwrapper==4.8.2
