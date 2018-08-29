@@ -1,43 +1,44 @@
-from flask import render_template, redirect, url_for, flash, request
-from app import app, db
-from app.forms import LoginForm, RegistrationForm, PostForm
-from flask_login import current_user, login_user, login_required, logout_user
+from flask import render_template, redirect, url_for, flash, request, current_app
+from flask_login import current_user, login_required
+from app import db
+from app.main.forms import PostForm
 from app.models import User, Post
+from app.main import bp
 
 # ------------------------------------------
 #                   User
 # ------------------------------------------
-@app.route('/',  methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
+@bp.route('/',  methods=['GET', 'POST'])
+@bp.route('/index', methods=['GET', 'POST'])
 def index():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-            page, app.config['POSTS_PER_PAGE'], False)
+            page, current_app.config['POSTS_PER_PAGE'], False)
     return render_template('index.html', title='Home', posts=posts.items)
-@app.route('/events')
+@bp.route('/events')
 def events():
     posts = Post.query.order_by(Post.timestamp.desc()).all()
     return render_template('events.html', title='Events', posts=posts)
-@app.route('/aboutUs')
+@bp.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html', title='About Us')
-@app.route('/whatWeDo')
+@bp.route('/whatWeDo')
 def whatWeDo():
     return render_template('whatWeDo.html', title='What We Do')
-@app.route('/partners')
+@bp.route('/partners')
 def partners():
     return render_template('partners.html', title='Partners')
-@app.route('/contactUs')
+@bp.route('/contactUs')
 def contactUs():
     contactUsPhoto = "/static/images/contactUsPhoto.jpg"
     return render_template('contactUs.html', user_image = contactUsPhoto, title='Contact Us')
-@app.route('/donate')
+@bp.route('/donate')
 def donate():
     return render_template('donate.html', title='Donate')
 # ------------------------------------------
 #                   Admin
 # ------------------------------------------
-@app.route('/user/<username>', methods=['GET', 'POST'])
+@bp.route('/user/<username>', methods=['GET', 'POST'])
 @login_required
 def user(username):
     form = PostForm()
@@ -51,7 +52,7 @@ def user(username):
     posts = Post.query.order_by(Post.timestamp.desc()).all()
     return render_template('user.html',form=form, user=user, posts=posts)
  
-@app.route('/delete/<int:id>', methods=['POST'])
+@bp.route('/delete/<int:id>', methods=['POST'])
 def remove(id):
     object = Object.query.get_or_404(id)
     delete(object)
@@ -59,7 +60,7 @@ def remove(id):
 # ------------------------------------------
 #       Login/Logout/Register
 # ------------------------------------------
-@app.route('/login', methods=['GET', 'POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -72,21 +73,8 @@ def login():
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
-@app.route('/logout')
+@bp.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email = form.email.data)
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
