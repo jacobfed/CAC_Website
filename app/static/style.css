@@ -1,0 +1,18 @@
+.blue {
+  background:#33ccff;
+}
+p, a {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-align: justify;
+}
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+h2,h3,h4,h5 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}

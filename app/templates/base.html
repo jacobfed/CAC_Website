@@ -1,41 +1,402 @@
 {% extends 'bootstrap/base.html' %}
+  <!-- New Head Area -->
+  {% block head %}
+  {{super()}}
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/>    
+
+    <!-- PLUGINS CSS STYLE -->
+    <link type="static/assets/plugins/jquery-ui/jquery-ui.css">
+    <link href="static/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="static/assets/plugins/rs-plugin/css/settings.css" rel="stylesheet" >
+    <link href="static/assets/plugins/selectbox/select_option1.css" rel="stylesheet">
+    <link href="static/assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="static/assets/plugins/fancybox/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="static/assets/plugins/isotope/isotope.css" rel="stylesheet">
+    <link href="static/assets/plugins/animate/animate.css" rel="stylesheet">
+
+    <!-- GOOGLE FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    <!-- CUSTOM CSS -->
+    <link href="static/assets/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/assets/css/default.css" id="option_color">
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="static/assets/img/favicon.png">
+
+
+
+    <!--<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+  {% endblock %}
+
   {% block title %}
   {% if title %}{{title}} - Canopy{% else %}Canopy Child Advocacy Center{% endif %}
   {% endblock %}
-  <body>
-    {% block navbar %}
-      <nav class="navbar navbar-default">
+  {% block navbar %}
+  <!-- ====================================
+  ——— PRELOADER
+  ===================================== -->
+  <!--
+  <div id="preloader" class="smooth-loader-wrapper">
+    <div class="smooth-loader">
+      <div class="loader">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+        <span class="dot dot-4"></span>
+      </div>
+    </div>
+  </div>
+  -->
+<body class="body-wrapper">
+  <div class="main-wrapper">
+    <!-- ====================================
+    ——— HEADER
+    ===================================== -->
+    <header id="pageTop" class="header-wrapper">
+      <!-- COLOR BAR -->
+      <div class="container-fluid color-bar top-fixed clearfix">
+        <div class="row">
+          <div class="col-sm-1 col-xs-2 bg-color-1">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-2">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-3">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-4">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-5">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-6">fix bar</div>
+          <div class="col-sm-1 bg-color-1 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-2 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-3 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-4 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-5 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-6 hidden-xs">fix bar</div>
+        </div>
+      </div>
+
+      <!-- TOP INFO BAR -->
+      <div class="top-info-bar bg-color-7 hidden-xs">
         <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" 
-              data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-              aria-expanded="false">
-              <span class="sr-only"> Toggle navigation </span>
+          <div class="row">
+            <div class="col-sm-12">
+              <ul class="list-inline topList">
+                <li><i class="fa fa-envelope bg-color-1" aria-hidden="true"></i> <a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
+                <li><i class="fa fa-phone bg-color-2" aria-hidden="true"></i> +1 234 567 8900</li>
+                <li><i class="fa fa-clock-o bg-color-6" aria-hidden="true"></i> Open: 9am - 6pm</li>
+                <li><i class="fa fa-home bg-color-1" aria-hidden="true"></i> 10000 Address Lane, Cleveland </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAVBAR -->
+      <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header" >
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="{{url_for('index')}}"><img src="static/images/app.png" alt="CAC Logo" height="200%" style="margin-top:-20px"></a>
           </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="{{ url_for('index')}}">Home</a></li>
-              <li><a href="{{ url_for('aboutUs')}}">About Us</a></li>
-              <li><a href="{{ url_for('whatWeDo')}}">What We Do</a></li>
-              <li><a href="{{ url_for('partners')}}">Partners</a></li>
-              <li><a href="{{ url_for('contactUs')}}">Contact Us</a></li>
-              <li><a href="{{ url_for('events')}}">Events</a></li>
-              <li><a href="{{ url_for('donate')}}">Donate</a></li>
-              {% if current_user.is_anonymous %}
-              <li><a href="{{ url_for('login')}}">Login</a></li>
-              {% else %}
-              <li><a href="{{ url_for('user',
-                  username=current_user.username) }}">Profile</a></li>
-              <li><a href="{{ url_for('logout')}}"> Logout </a><li>
-              {% endif %}
-            </ul> 
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="color-1 active">
+                <a href="{{url_for('index')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-home bg-color-1" aria-hidden="true"></i><span class="active">Home</span>
+                </a>
+              </li>
+              <li class="color-3">
+                <a href="{{url_for('aboutUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i> <span>About Us</span>
+                </a>
+              </li>
+              <li class="color-2">
+                <a href="{{url_for('whatWeDo')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-globe bg-color-2" aria-hidden="true"></i> <span>What We Do</span>
+                </a>
+              </li>
+              <li class="color-4">
+                <a href="{{url_for('partners')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-gg bg-color-4" aria-hidden="true"></i> <span>Partners</span>
+                </a>
+              </li>
+              <li class="color-1">
+                <a href="{{url_for('contactUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-map-marker bg-color-1" aria-hidden="true"></i> <span>Contact Us</span>
+                </a>
+              </li>
+              <li class="color-5">
+                <a href="{{url_for('events')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-calendar bg-color-5" aria-hidden="true"></i> <span>Events</span>
+                </a>
+              </li> 
+              <li class="color-6">
+                <a href="{{url_for('donate')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-check bg-color-6" aria-hidden="true"></i> <span>Donate</span>
+                </a>
+              </li> 
+            </ul>
           </div>
         </div>
       </nav>
+    </header>
+
     {% endblock %}
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
+
+    {% block footer %}
+        <!-- ====================================
+    }
+    ——— FOOTER
+    ===================================== -->
+    <footer>
+      <!-- COLOR BAR -->
+      <div class="container-fluid color-bar clearfix">
+        <div class="row">
+          <div class="col-sm-1 col-xs-2 bg-color-1">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-2">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-3">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-4">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-5">fix bar</div>
+          <div class="col-sm-1 col-xs-2 bg-color-6">fix bar</div>
+          <div class="col-sm-1 bg-color-1 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-2 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-3 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-4 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-5 hidden-xs">fix bar</div>
+          <div class="col-sm-1 bg-color-6 hidden-xs">fix bar</div>
+        </div>
+      </div>
+      <!-- FOOTER INFO AREA -->
+      <div class="footerInfoArea full-width clearfix" style="background-image: url(assets/img/footer/footer-bg-1.png);">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3 col-xs-12">
+              <div class="footerTitle">
+                <a href="index.html"><img src="static/assets/img/logo-footer.png"></a>
+              </div>
+              <div class="footerInfo">
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa officia.Lorem ipsum dolor sit amet.</p>
+                <p>consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="footerTitle">
+                <h4>Useful Links</h4>
+              </div>
+              <div class="footerInfo">
+                <ul class="list-unstyled footerList">
+                  <li>
+                    <a href="index.html">
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i>Kidz School
+                    </a>
+                  </li>
+                  <li>
+                    <a href="about_us.html">
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i>About Kidz School
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index-v2.html">
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i>Kidz Store
+                    </a>
+                  </li>
+                  <li>
+                    <a href="index-v3.html">
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i>Kidz Daycare
+                    </a>
+                  </li>
+                  <li>
+                    <a href="photo-gallery.html">
+                      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                      Photo Gallery
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="footerTitle">
+                <h4>Recent Post</h4>
+              </div>
+              <div class="footerInfo">
+                <ul class="list-unstyled postLink">
+                  <li>
+                    <div class="media">
+                      <a class="media-left" href="single-blog.html">
+                        <img class="media-object img-rounded border-color-1" src="static/assets/img/footer/footer-img-1.png" alt="Image">
+                      </a>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="single-blog.html">A Clean Website Gives More Experience To The Visitors</a></h5>
+                        <p>July 7 - 2016</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <a class="media-left" href="single-blog-left-sidebar.html">
+                        <img class="media-object img-rounded border-color-2" src="static/assets/img/footer/footer-img-2.png" alt="Image">
+                      </a>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="single-blog-left-sidebar.html">A Clean Website Gives More Experience To The Visitors</a></h5>
+                        <p>July 7 - 2016</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <a class="media-left" href="single-blog-left-sidebar.html">
+                        <img class="media-object img-rounded border-color-4" src="static/assets/img/footer/footer-img-3.png" alt="Image">
+                      </a>
+                      <div class="media-body">
+                        <h5 class="media-heading"><a href="single-blog-left-sidebar.html">A Clean Website Gives More Experience To The Visitors</a></h5>
+                        <p>July 7 - 2016</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+              <div class="footerTitle">
+                <h4>Mailing List</h4>
+              </div>
+              <div class="footerInfo">
+                <p>Sign up for our mailing list to get latest updates and offers.</p>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Email address" aria-describedby="basic-addon21">
+                  <button type="submit" class="input-group-addon" id="basic-addon21"><i class="fa fa-check" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- COPY RIGHT -->
+      <div class="copyRight clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+              <ul class="list-inline">
+                <li><a href="#" class="bg-color-1"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="bg-color-2"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="bg-color-3"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="bg-color-4"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                <li><a href="#" class="bg-color-5"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+            <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+              <div class="copyRightText">
+                <p>© 2016 Copyright Kidz School Bootstrap Template by <a href="https://www.iamabdus.com/">Abdus</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+
+    <div class="scrolling">
+      <a href="#pageTop" class="backToTop hidden-xs" id="backToTop"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    </div>
+
+    <!-- ====================================
+    ——— LOGIN MODAL
+    ===================================== -->
+    <div class="modal fade customModal" id="loginModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="panel panel-default formPanel">
+            <div class="panel-heading bg-color-1 border-color-1">
+              <h3 class="panel-title">Login</h3>
+            </div>
+            <div class="panel-body">
+              <form action="#" method="POST" role="form">
+                <div class="form-group formField">
+                  <input type="text" class="form-control" placeholder="User name">
+                </div>
+                <div class="form-group formField">
+                  <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group formField">
+                  <input type="submit" class="btn btn-primary btn-block bg-color-3 border-color-3" value="Log in">
+                </div>
+                <div class="form-group formField">
+                  <p class="help-block"><a href="#">Forgot password?</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================
+    ——— create account modal
+    ===================================== -->
+    <div class="modal fade custommodal" id="createaccount" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="panel panel-default formpanel">
+            <div class="panel-heading bg-color-1 border-color-1">
+              <h3 class="panel-title">create  an account</h3>
+            </div>
+            <div class="panel-body">
+              <form action="#" method="post" role="form">
+                <div class="form-group formfield">
+                  <input type="text" class="form-control" placeholder="name">
+                </div>
+                <div class="form-group formfield">
+                  <input type="text" class="form-control" placeholder="user name">
+                </div>
+                <div class="form-group formfield">
+                  <input type="text" class="form-control" placeholder="phone">
+                </div>
+                <div class="form-group formfield">
+                  <input type="password" class="form-control" placeholder="password">
+                </div>
+                <div class="form-group formfield">
+                  <input type="password" class="form-control" placeholder="re-password">
+                </div>
+                <div class="form-group formfield">
+                  <input type="submit" class="btn btn-primary btn-block bg-color-3 border-color-3" value="register">
+                </div>
+                <div class="form-group formfield">
+                  <p class="help-block">allready have an account? <a href="#">log in</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="static/assets/plugins/jquery/jquery-min.js"></script>
+    <script src="static/assets/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/assets/plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="static/assets/plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="static/assets/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+    <script src="static/assets/plugins/owl-carousel/owl.carousel.js"></script>
+    <script src="static/assets/plugins/waypoint/waypoints.min.js"></script>
+    <script src="static/assets/plugins/counter-up/jquery.counterup.min.js"></script>
+    <script src="static/assets/plugins/isotope/isotope.min.js"></script>
+    <script src="static/assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+    <script src="static/assets/plugins/isotope/isotope-triger.js"></script>
+    <script src="static/assets/plugins/countdown/jquery.syotimer.js"></script>
+    <script src="static/assets/plugins/velocity/velocity.min.js"></script>
+    <script src="static/assets/plugins/smoothscroll/smoothscroll.js"></script>
+    <script src="static/assets/plugins/wow/wow.min.js"></script>
+    <script src="static/assets/js/app.js"></script>
+    {% endblock %}
+
   </body>

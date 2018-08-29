@@ -50,6 +50,12 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = Post.query.order_by(Post.timestamp.desc()).all()
     return render_template('user.html',form=form, user=user, posts=posts)
+ 
+@app.route('/delete/<int:id>', methods=['POST'])
+def remove(id):
+    object = Object.query.get_or_404(id)
+    delete(object)
+    return redirect(url_for('index'))
 # ------------------------------------------
 #       Login/Logout/Register
 # ------------------------------------------
