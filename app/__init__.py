@@ -1,11 +1,12 @@
+import logging
+from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask import Flask, request, current_app
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-import logging
-from logging.handlers import SMTPHandler, RotatingFileHandler
+from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 
 
@@ -15,6 +16,7 @@ login = LoginManager()
 login.login_view = 'auth.login'
 #login.login_message = _l('Please Log in to access this page.')
 bootstrap = Bootstrap()
+mail = Mail()
 
 
 
@@ -26,6 +28,7 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
     login.init_app(app)
     bootstrap.init_app(app)
+    mail.init_app(app)
 
     # Errors Blueprint 
     from app.errors import bp as errors_bp
