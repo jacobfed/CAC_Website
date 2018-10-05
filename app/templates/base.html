@@ -26,8 +26,6 @@
     <!-- Icons -->
     <link rel="shortcut icon" href="static/assets/img/favicon.png">
 
-
-
     <!--<link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
   {% endblock %}
@@ -44,6 +42,7 @@
     <!-- ====================================
     ——— HEADER
     ===================================== -->
+
     <header id="pageTop" class="header-wrapper">
       <!-- COLOR BAR -->
       <div class="container-fluid color-bar top-fixed clearfix">
@@ -78,26 +77,19 @@
           </div>
         </div>
       </div>
-
-      <!-- NAVBAR -->
-      <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
-        <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header" >
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-              <span class="sr-only">Toggle navigation</span>
+      <nav id="menuBar" class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="icon-bar"></span> 
             </button>
-            <a class="navbar-left" href="{{url_for('main.index')}}"><img class="hidden-sm hidden-md hidden-xs"
-              style="max-height:102px;"src="static/images/newLogo.png" alt="CAC Logo" ><img class="hidden-lg hidden-xl
-                                                                                            img-fluid"
-              src="static/images/name.png"></a>
+            <a class="navbar-left" href="{{url_for('main.index')}}">
+              <img class="hidden-sm hidden-md hidden-xs" style="max-height:102px;"src="static/images/newLogo.png" alt="CAC Logo">
+            </a>
           </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <li class="color-1 active">
                 <a href="{{url_for('main.index')}}" role="button" aria-haspopup="true" aria-expanded="false">
@@ -106,39 +98,42 @@
               </li>
               <li class="color-3">
                 <a href="{{url_for('main.aboutUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                	<i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i> <span>About Us</span>
+                  <i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i> <span>About Us</span>
                 </a>
               </li>
               <li class="color-2">
                 <a href="{{url_for('main.whatWeDo')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                	<i class="fa fa-globe bg-color-2" aria-hidden="true"></i> <span>What We Do</span>
+                  <i class="fa fa-globe bg-color-2" aria-hidden="true"></i> <span>What We Do</span>
                 </a>
               </li>
               <li class="color-4">
                 <a href="{{url_for('main.partners')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                	<i class="fa fa-gg bg-color-4" aria-hidden="true"></i> <span>Partners</span>
+                  <i class="fa fa-gg bg-color-4" aria-hidden="true"></i> <span>Partners</span>
                 </a>
               </li>
               <li class="color-1">
                 <a href="{{url_for('main.contactUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                	<i class="fa fa-map-marker bg-color-1" aria-hidden="true"></i> <span>Contact Us</span>
+                  <i class="fa fa-map-marker bg-color-1" aria-hidden="true"></i> <span>Contact Us</span>
                 </a>
               </li>
               <li class="color-5">
                 <a href="{{url_for('main.events')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                	<i class="fa fa-calendar bg-color-5" aria-hidden="true"></i> <span>Events</span>
+                  <i class="fa fa-calendar bg-color-5" aria-hidden="true"></i> <span>Events</span>
                 </a>
               </li> 
               <li class="color-6">
                 <a href="{{url_for('main.donate')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                	<i class="fa fa-check bg-color-6" aria-hidden="true"></i> <span>Donate</span>
+                  <i class="fa fa-check bg-color-6" aria-hidden="true"></i> <span>Donate</span>
                 </a>
-              </li> 
+              </li>
             </ul>
+              <br/>
           </div>
         </div>
       </nav>
     </header>
+  </div>
+
 
     {% endblock %}
     {% block content %}
@@ -339,7 +334,7 @@
         <div class="modal-content">
           <div class="panel panel-default formpanel">
             <div class="panel-heading bg-color-1 border-color-1">
-              <h3 class="panel-title">create  an account</h3>
+              <h3 class="panel-title">create an account</h3>
             </div>
             <div class="panel-body">
               <form action="#" method="post" role="form">
@@ -362,7 +357,7 @@
                   <input type="submit" class="btn btn-primary btn-block bg-color-3 border-color-3" value="register">
                 </div>
                 <div class="form-group formfield">
-                  <p class="help-block">allready have an account? <a href="#">log in</a></p>
+                  <p class="help-block">already have an account? <a href="#">log in</a></p>
                 </div>
               </form>
             </div>

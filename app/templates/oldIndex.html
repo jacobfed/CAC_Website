@@ -1,0 +1,58 @@
+      <!-- NAVBAR -->
+      <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header" >
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynav">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-left" href="{{url_for('main.index')}}">i
+              <img class="hidden-sm hidden-md hidden-xs" style="max-height:102px;"src="static/images/newLogo.png" alt="CAC Logo" >
+              <img class="hidden-lg hidden-xl img-fluid" src="static/images/name.png">
+            </a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse mynav" id="mynav">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="color-1 active">
+                <a href="{{url_for('main.index')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-home bg-color-1" aria-hidden="true"></i><span class="active">Home</span>
+                </a>
+              </li>
+              <li class="color-3">
+                <a href="{{url_for('main.aboutUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i> <span>About Us</span>
+                </a>
+              </li>
+              <li class="color-2">
+                <a href="{{url_for('main.whatWeDo')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-globe bg-color-2" aria-hidden="true"></i> <span>What We Do</span>
+                </a>
+              </li>
+              <li class="color-4">
+                <a href="{{url_for('main.partners')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-gg bg-color-4" aria-hidden="true"></i> <span>Partners</span>
+                </a>
+              </li>
+              <li class="color-1">
+                <a href="{{url_for('main.contactUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-map-marker bg-color-1" aria-hidden="true"></i> <span>Contact Us</span>
+                </a>
+              </li>
+              <li class="color-5">
+                <a href="{{url_for('main.events')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-calendar bg-color-5" aria-hidden="true"></i> <span>Events</span>
+                </a>
+              </li> 
+              <li class="color-6">
+                <a href="{{url_for('main.donate')}}" role="button" aria-haspopup="true" aria-expanded="false">
+                	<i class="fa fa-check bg-color-6" aria-hidden="true"></i> <span>Donate</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
