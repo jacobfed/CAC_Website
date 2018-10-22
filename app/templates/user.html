@@ -5,6 +5,12 @@
   <h1> User: {{ user.username }} </h1>
     <form action="" method="post">
         {{ form.hidden_tag() }}
+        <h1> {{ form.title.label}} <br> 
+             {{ form.post(cols=32, rows=1)}}<br>
+            {% for error in form.post.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}             
+        </h1>
         <p>
             {{ form.post.label }}<br>
             {{ form.post(cols=32, rows=4) }}<br>
@@ -17,4 +23,5 @@
   {% for post in posts %}
     {% include '_post.html' %}
   {% endfor %}
+  {% block footer %} {{super() }}{% endblock %}
 {% endblock %}

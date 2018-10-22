@@ -44,7 +44,7 @@
           	{% for post in posts %}
             <div class="media courseList">
               <div class="media-body">
-                <h3 class="media-heading color-6 text-center">post title</h3>
+                <h3 class="media-heading color-1 text-center">{{post.title}}</h3>
                 <p class="text-center"> {{ post.body }} </p>
               </div>
             </div>
@@ -65,4 +65,5 @@
 
       </div>
     </section>	
+{% block footer %} {{super() }}{% endblock %}
 {% endblock %}
