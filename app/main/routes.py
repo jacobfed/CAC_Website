@@ -19,7 +19,7 @@ def index():
 @bp.route('/events')
 def events():
     posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template('events.html', title='Events', posts=posts)
+    return render_template('events2.html', title='Events', posts=posts)
 @bp.route('/aboutUs')
 def aboutUs():
     return render_template('aboutUs.html', title='About Us')
@@ -28,7 +28,7 @@ def whatWeDo():
     return render_template('whatWeDo.html', title='What We Do')
 @bp.route('/partners')
 def partners():
-    return render_template('partners.html', title='Partners')
+    return render_template('partners2.html', title='Partners')
 @bp.route('/contactUs')
 def contactUs():
     contactUsPhoto = "/static/images/contactUsPhoto.jpg"
