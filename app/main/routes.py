@@ -25,7 +25,7 @@ def aboutUs():
     return render_template('aboutUs.html', title='About Us')
 @bp.route('/whatWeDo')
 def whatWeDo():
-    return render_template('whatWeDo.html', title='What We Do')
+    return render_template('whatWeDoe2.html', title='What We Do')
 @bp.route('/partners')
 def partners():
     return render_template('partners2.html', title='Partners')

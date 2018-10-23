@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+        <div class="col-md-10">
+          <p><img src="/static/images/contact.jpg" alt="Contact Us Photo" width="100%"  height="auto"/></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+        <div class="col-md-10">
+          <p class="text-center"><b>Need services?</b> At this time, referrals to the child advocacy center come directly from the Cuyahoga County Division of Children and Family Services. You can contact them at 216-696-5437.</p>
+          <p class="text-center">*Please note that referrals will be accepted from others in the future. Stay tuned!</p>
+          <p class="text-center"><b>Interested in getting involved or desire more information?</b></p>
+          <p class="text-center">Reach out to director Jennifer Johnson at 216-229-2420 ext. 250 or jjohnson@dvcac.org</p>
+      </div>
+    </div>
+  </div>
+{% block footer %} {{super() }}{% endblock %}
+{% endblock %}

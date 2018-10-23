@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- ====================================
+	——— PAGE TITLE SECTION
+	===================================== -->
+    <section class="pageTitleSection">
+      <div class="container">
+        <div class="pageTitleInfo">
+          <h2>What we do at Canopy CAC</h2>
+          <ol class="breadcrumb">
+            <li>A child that has experienced abuse comes to one child-friendly, trauma-informed location where they receive a wide array of services.</li>
+            <li> These services include:</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+	<!-- ====================================
+    ——— MAIN SECTION
+    ===================================== -->
+    <section class="mainContent full-width clearfix">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="accordionCommon hello" id="faqAccordion">
+              <div class="panel-group" id="accordionFaq">
+                <div class="panel panel-default">
+                  <a class="panel-heading accordion-toggle bg-color-1" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-aa">
+                    <span>Forensic Interview</span>
+                    <span class="iconBlock"><i class="fa fa-chevron-down"></i></span>
+                  </a>
+                  <div id="collapse-aa" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <p>The child speaks with an interviewer who has special training to talk with children. The interview room has special equipment that lets the other team members to watch the interview live or on a recorded DVD. This way the child doesn’t have to retell their story over and over.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <a class="panel-heading accordion-toggle bg-color-2" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-bb">
+                    <span>Victim Advocacy</span>
+                    <span class="iconBlock"><i class="fa fa-chevron-up"></i></span>
+                  </a>
+                  <div id="collapse-bb" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>An advocate works with each family to provide support and resources. They will be with you through every step in the process.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <a class="panel-heading accordion-toggle bg-color-3" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-cc">
+                    <span>Medical Exam</span>
+                    <span class="iconBlock"><i class="fa fa-chevron-up"></i></span>
+                  </a>
+                  <div id="collapse-cc" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Doctors and nurses with special training are available to do a medical exam if they think it would be helpful.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <a class="panel-heading accordion-toggle bg-color-4" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-dd">
+                    <span>Medical Health</span>
+                    <span class="iconBlock"><i class="fa fa-chevron-up"></i></span>
+                  </a>
+                  <div id="collapse-dd" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p>Evidence-based, trauma-focused mental health services, designed to meet the unique needs of our clients, are available.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <a class="panel-heading accordion-toggle bg-color-5" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-ee">
+                    <span>Prosecution</span>
+                    <span class="iconBlock"><i class="fa fa-chevron-up"></i></span>
+                  </a>
+                  <div id="collapse-ee" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <a class="panel-heading accordion-toggle bg-color-1" data-toggle="collapse" data-parent="#accordionFaq" href="#collapse-ff">
+                    <span>Law Enforcement</span>
+                    <span class="iconBlock"><i class="fa fa-chevron-up"></i></span>
+                  </a>
+                  <div id="collapse-ff" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  {% block footer %} {{super() }}{% endblock %}
+
+{% endblock %}
