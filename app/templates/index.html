@@ -35,42 +35,6 @@
 	<!--====================================
     ——— MAIN SECTION
     ===================================== -->
-    <section class="clearfix linkSection hidden-xs">
-      <div class="sectionLinkArea hidden-xs scrolling">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-3">
-              <a href="{{url_for('main.aboutUs')}}" class="sectionLink bg-color-1" id="coursesLink">
-                <i class="fa fa-file-text-o linkIcon border-color-1" aria-hidden="true"></i>
-                <span class="linkText">About Us</span>
-                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
-              </a>
-            </div>
-            <div class="col-sm-3 ">
-              <a href="{{url_for('main.partners')}}#ourTeam" class="sectionLink bg-color-2" id="teamLink">
-                <i class="fa fa-calendar-o linkIcon border-color-2" aria-hidden="true"></i>
-                <span class="linkText">Partners</span>
-                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
-              </a>
-            </div>
-            <div class="col-sm-3 ">
-              <a href="{{url_for('main.contactUs')}}#ourGallery" class="sectionLink bg-color-3" id="galleryLink">
-                <i class="fa fa-picture-o linkIcon border-color-3" aria-hidden="true"></i>
-                <span class="linkText">Contact Us</span>
-                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
-              </a>
-            </div>
-            <div class="col-sm-3">
-              <a href="{{url_for('main.events')}}#latestNews" class="sectionLink bg-color-4" id="newsLink">
-                <i class="fa fa-files-o linkIcon border-color-4" aria-hidden="true"></i>
-                <span class="linkText">Events</span>
-                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>    
     
     <section class="mainContent full-width clearfix aboutSection">
       <div class="container">
@@ -82,6 +46,13 @@
             <div class="schoolInfo">
               <h2>Welcome to Canopy Child Advocacy Center of Cleveland</h2>
               <p> A CAC is a national best practice model utilized to reduce potential trauma to children and families impacted by child abuse and improve services through interagency collaboration. Clients come to one child-friendly, trauma-informed location where they will receive a wide array of services to help in both the short and long term healing process. </p>
+              <p> Learn more 
+                <a href="{{url_for('main.whatWeDo')}}" role="button" aria-haspopup="true" aria-expanded="false"> HERE</a>
+              </p>
+              <h2>Mission</h2>
+              <p>Our mission is to serve children and families affected by child abuse through a multi-disciplinary partnership focused on safety, healing, and well-being.</p>
+              <h2>Vision</h2>
+              <p>We envision a community where children are safe, families are resilient, and those affected by child abuse are empowered to heal and thrive.</p>
             </div>
           </div>
         </div>

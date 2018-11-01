@@ -89,7 +89,7 @@
               </li>
               <li class="color-3">
                 <a href="{{url_for('main.aboutUs')}}" role="button" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i> <span>About Us</span>
+                  <i class="fa fa-list-ul bg-color-3" aria-hidden="true"></i> <span>about us</span>
                 </a>
               </li>
               <li class="color-2">
@@ -168,14 +168,14 @@
             <div class="col-sm-5 col-sm-push-5 col-xs-12">
               <ul class="list-inline">
                 <li><a href="#" class="bg-color-3"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
-                <li><p style="color: white;">216-696-KIDS(5437)</p></li>
+                <li><p style="color: white;">216-574-4325</p></li>
                 <li><a class="bg-color-2"><i class="fa fa-fax" aria-hidden="true"></i></a></li> 
-                <li><p style="color: white;">216-696-KIDS(5437)</p></li>
+                <li><p style="color: white;">216-574-9213</p></li>
               </ul>
             </div>
             <div class="col-sm-5 col-sm-pull-5 col-xs-12">
               <div class="copyRightText">                
-                <p>© 2018 Copyright <a href="https://www.umich.edu/~jacobfed/"></a>Jacob Fedrigon |
+                <p> 
                 {% if current_user.is_anonymous == 0 %}
                 <a href="{{url_for('main.logout')}}"> Logout</a>
                 {% else %}
