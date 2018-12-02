@@ -10,7 +10,6 @@ from app.models import User
 # ------------------------------------------
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
-    print("check 1.....")
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
     form = LoginForm()

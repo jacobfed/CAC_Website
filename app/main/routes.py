@@ -53,11 +53,7 @@ def user(username):
     posts = Post.query.order_by(Post.timestamp.desc()).all()
     return render_template('user.html',form=form, user=user, posts=posts)
  
-@bp.route('/delete/<int:id>', methods=['POST'])
-def remove(id):
-    object = Object.query.get_or_404(id)
-    delete(object)
-    return redirect('/')
+
 
 # ------------------------------------------
 #       Login/Logout/Register
